@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SS服务器搭建教程 | lostPontifex的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X 安装步骤1、安装必须的软件：12345yum install epel-releaseyum updateyum install python-setuptools m2crypto supervisoreasy_install pippip ins">
+  <meta name="description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X">
 <meta name="keywords" content="ss,教程,centos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SS服务器搭建教程">
 <meta property="og:url" content="http://yoursite.com/2018/06/22/SS服务器搭建教程/index.html">
 <meta property="og:site_name" content="lostPontifex的博客">
-<meta property="og:description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X 安装步骤1、安装必须的软件：12345yum install epel-releaseyum updateyum install python-setuptools m2crypto supervisoreasy_install pippip ins">
+<meta property="og:description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-22T11:38:45.725Z">
+<meta property="og:updated_time" content="2018-06-22T11:40:54.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SS服务器搭建教程">
-<meta name="twitter:description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X 安装步骤1、安装必须的软件：12345yum install epel-releaseyum updateyum install python-setuptools m2crypto supervisoreasy_install pippip ins">
+<meta name="twitter:description" content="环境准备一：硬件环境可以直接访问外网的公网服务器一台（必须），请自行购买。 软件环境1、CentOS（我是用的centos）2、Python 2.X">
   
   
     <link rel="icon" href="/favicon.png">
@@ -180,6 +180,7 @@
       
         <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="一：硬件环境"><a href="#一：硬件环境" class="headerlink" title="一：硬件环境"></a>一：硬件环境</h3><p>可以直接访问外网的公网服务器一台（必须），请自行购买。</p>
 <h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>1、CentOS（我是用的centos）<br>2、Python 2.X</p>
+<a id="more"></a>
 <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1、安装必须的软件："><a href="#1、安装必须的软件：" class="headerlink" title="1、安装必须的软件："></a>1、安装必须的软件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum update</span><br><span class="line">yum install python-setuptools m2crypto supervisor</span><br><span class="line">easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
 <h3 id="2、创建-etc-shadowsocks-json-文件，内容如下："><a href="#2、创建-etc-shadowsocks-json-文件，内容如下：" class="headerlink" title="2、创建 /etc/shadowsocks.json 文件，内容如下："></a>2、创建 /etc/shadowsocks.json 文件，内容如下：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">	<span class="string">"server_port"</span>:server_port,    <span class="comment">#例如5460</span></span><br><span class="line">	<span class="string">"local_port"</span>:1080,</span><br><span class="line">	<span class="string">"password"</span>:<span class="string">"password"</span>,</span><br><span class="line">	<span class="string">"timeout"</span>:600,</span><br><span class="line">	<span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="3、修改-etc-supervisord-conf-文件，添加以下内容到supervisord-conf最后："><a href="#3、修改-etc-supervisord-conf-文件，添加以下内容到supervisord-conf最后：" class="headerlink" title="3、修改 /etc/supervisord.conf 文件，添加以下内容到supervisord.conf最后："></a>3、修改 /etc/supervisord.conf 文件，添加以下内容到supervisord.conf最后：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:shadowsocks]</span><br><span class="line"><span class="built_in">command</span>=ssserver -c /etc/shadowsocks.json</span><br><span class="line">autostart=<span class="literal">true</span></span><br><span class="line">autorestart=<span class="literal">true</span></span><br><span class="line">user=root</span><br><span class="line">log_stderr=<span class="literal">true</span></span><br><span class="line">logfile=/var/<span class="built_in">log</span>/shadowsocks.log</span><br></pre></td></tr></table></figure>
@@ -452,6 +453,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ss</a>
               </li>
              
@@ -461,14 +470,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
             
             <div class="clearfix"></div>
