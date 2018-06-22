@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="lostPontifex的博客">
 <meta property="og:description" content="准备工作需要git、nodejs、以及hexo，所以首先需要有一个github账号，没有的话去注册一个； 环境（以下是我用的环境，视情况而定，没必要要求）：win10node：v10.4.1git：2.17.1.windows.2hexo: 3.7.1 搭建博客">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-22T10:33:18.349Z">
+<meta property="og:updated_time" content="2018-06-22T10:36:55.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub+Hexo搭建个人博客">
 <meta name="twitter:description" content="准备工作需要git、nodejs、以及hexo，所以首先需要有一个github账号，没有的话去注册一个； 环境（以下是我用的环境，视情况而定，没必要要求）：win10node：v10.4.1git：2.17.1.windows.2hexo: 3.7.1 搭建博客">
@@ -182,8 +182,7 @@
 <h3 id="五：修改主题（认为默认主题可以接受的，略过此步骤）"><a href="#五：修改主题（认为默认主题可以接受的，略过此步骤）" class="headerlink" title="五：修改主题（认为默认主题可以接受的，略过此步骤）"></a>五：修改主题（认为默认主题可以接受的，略过此步骤）</h3><p>我觉得一款差不多的主题hexo-theme-yilia<br>    先下载这个主题，在themes目录下<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure></p>
 <pre><code>然后修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。
 </code></pre><h3 id="六：上传到GitHub"><a href="#六：上传到GitHub" class="headerlink" title="六：上传到GitHub"></a>六：上传到GitHub</h3><p>首先，ssh key肯定要配置好。</p>
-<p>其次，配置_config.yml中有关deploy的部分</p>
-<p>deploy:<br>    type: git<br>    repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:liuxianan/liuxianan.github.io.git<br>    branch: master</p>
+<p>其次，配置_config.yml中有关deploy的部分<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    <span class="built_in">type</span>: git</span><br><span class="line">    repository: git@github.com:liuxianan/liuxianan.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure></p>
 <p>安装一个插件，不然执行hexo d的时候会出错<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
 <p>最后，执行hexo d命令，到此，一个GitHub+hexo搭建的个人博客就成功了</p>
 
